@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.9.2",
+  "description": "Images Server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ivan Nesteruk",
+  "license": "Propietary to Ivan Nesteruk",
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "uuid": "^3.3.3"
+  }
+}
