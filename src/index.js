@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 const app = express();
 app.use(cors());
 // Settings
-app.set('port', 3003);
+app.set('port', 3004);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
