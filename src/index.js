@@ -35,7 +35,16 @@ app.use(multer({
         cb("Error: archivo invalido")
     }
 
-}).single('image'));
+}).fields([
+    {
+        name: 'image',
+        maxCount: 2
+    },
+    {
+        name: 'image2',
+        maxCount: 2
+    }
+]));
 
 // Routes
 app.use(require('./routes/routes'));
