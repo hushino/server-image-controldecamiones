@@ -10,8 +10,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/upload', (req, res) => {
-    console.log(req.file);
-    res.send(req.file)
+    console.log(req.files);
+    //res.send(req.file)
+    res.send(req.files)
 });
 router.get('/upload/image/:id', (req, res) => {
     //res.send(`Get Image Name with id ${req.params.id}`)

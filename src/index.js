@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use(multer({
     storage,
     dest: path.join(__dirname, 'public/uploads'),
-    limits: { fieldSize: 2000000 }, // 2mb
+    limits: { fieldSize: 20000000 }, // 20mb
     fileFilter: (req, file, cb) => {
         const filetypes = /jpeg|jpg|png|gif/;
         const mimetype = filetypes.test(file.mimetype);
@@ -35,16 +35,24 @@ app.use(multer({
         cb("Error: archivo invalido")
     }
 
-}).fields( [
+}).array('file')/* .fields([
+    {
+        name: 'file',
+        maxCount: 3
+    },]) *//* .single('file') *//* .array('file') *//* .fields([
     {
         name: 'image',
-        maxCount: 2
+        maxCount: 3
     },
     {
         name: 'image2',
-        maxCount: 2
-    }
-])/* .single('image') */);
+        maxCount: 3
+    },
+    {
+        name: 'file',
+        maxCount: 3
+    },
+]) *//* .single('image') */);
 /* [
     {
         name: 'image',
@@ -65,8 +73,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
 })
+/*
+  files:
+   [ { fieldname: 'file',
+       originalname: '72742145_2533896076842215_907696674644688896_o.jpg',
+       encoding: '7bit',
+       mimetype: 'image/jpeg',
+       destination:
+        'C:\\Users\\redmagic\\Desktop\\server-image-camiones\\server-image-controldecamiones\\src\\public\\uploads',
+       filename: '72742145_2533896076842215_907696674644688896_o.jpg.png',
+       path:
+        'C:\\Users\\redmagic\\Desktop\\server-image-camiones\\server-image-controldecamiones\\src\\public\\uploads\\72742145_2533896076842215_907696674644688896_o.jpg.png',
+       size: 183282 },
+       mimetype: 'image/jpeg',
+       destination:
+        'C:\\Users\\redmagic\\Desktop\\server-image-camiones\\server-image-controldecamiones\\src\\public\\uploads',
+       filename: 'sample-096dcf911f1e1806214481be42328fa3.jpg.png',
+       path:
+        'C:\\Users\\redmagic\\Desktop\\server-image-camiones\\server-image-controldecamiones\\src\\public\\uploads\\sample-096dcf911f1e1806214481be42328fa3.jpg.png',
+       size: 166775 } ],
+  route:
+   Route { path: '/upload', stack: [ [Layer] ], methods: { post: true } } }
 
-/* const imageInfoExampleOfMulterAfterUpload = {
+const imageInfoExampleOfMulterAfterUpload = {
     fieldname: 'image',
     originalname: 'ZMCZ-13181.jpg',
     encoding: '7bit',
